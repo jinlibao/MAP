@@ -5,9 +5,23 @@
 
 clear; close all; clc;
 
-TYPE = 2; % 1 for exponential; 2 for arctan;
 N = 4; % Number of basis function
 ALPHA = 0.1;
 [t, S] = load_data();
-[c, S_hat] = solve_least_square(t, S, TYPE, N, ALPHA)
-plot_result(t, S, S_hat);
+
+R = [];
+C = [];
+
+for TYPE = 1:2
+    for i = 1:4
+        alpha = i * ALPHA;
+        [c, S_hat, res] = solve_least_square(t, S, TYPE, N, alpha);
+        C(i, :, TYPE) = c;
+        subplot(2, 4, (TYPE - 1) * 4 + i);
+        plot_result(t, S, S_hat, TYPE, alpha);
+        R(i, TYPE) = res;
+    end
+end
+
+R
+C

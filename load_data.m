@@ -16,8 +16,12 @@ if nargin == 0
     filename = 'Fluid_Fractions_Produced_after_Breakthrough';
 end
 
+pore_volume = 29.39;
+Sw_initial = 0.278;
+
 % Read data from excel file
 raw_data = xlsread(filename, 'Data', 'A1:D49');
 t = raw_data(:, 1); % Time Interval
-S = raw_data(:, 2) ./ (raw_data(:, 2) + raw_data(:, 3)); % Saturation of Water
+S = (cumsum(raw_data(:,3)) ./ pore_volume)  + Sw_initial;
+% S = raw_data(:, 2) ./ (raw_data(:, 2) + raw_data(:, 3)); % Saturation of Water
 end
