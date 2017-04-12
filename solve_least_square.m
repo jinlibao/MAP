@@ -4,12 +4,12 @@ function [c, S_hat, res] = solve_least_square(t, S, TYPE, N, ALPHA)
 if nargin == 2
     TYPE = 1;
     N = 4;
-    ALPHA = 0.1;
+    ALPHA = 1;
 elseif nargin == 3
     N = 4;
-    ALPHA = 0.1;
+    ALPHA = 1;
 elseif nargin == 4
-    ALPHA = 0.1;
+    ALPHA = 1;
 end
 
 [A, b] = generate_matrix(t, S, TYPE, N, ALPHA);
