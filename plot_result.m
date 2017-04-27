@@ -16,8 +16,8 @@ hold on;
 plot(t, S_hat, '-')
 axis([0 2 0.35 0.55]);
 legend('Data points', 'Least Square Fitting', 'Location', 'best');
-xlabel('t');
-ylabel('S');
-string = strcat('S - t: TYPE: ', num2str(TYPE), ' ALPHA: ', num2str(ALPHA));
+xlabel('\tau');
+ylabel('S(\tau)');
+string = strcat('S(\tau) - \tau: Type: ', num2str(TYPE), ' \alpha: ', num2str(ALPHA));
 title(string);
 end
